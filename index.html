@@ -238,18 +238,6 @@
         </div>
     </div>
 
-    <div id="tab5" class="tab-content fullpage-tab">
-        <iframe
-            id="invest-online-frame"
-            src="https://hg-inves3-0.vercel.app/"
-            title="看盘工具"
-            style="width:100%; height:100vh; border:none; background:#fff; display:block;"
-            loading="eager"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation allow-popups">
-        </iframe>
-        <button class="floating-back-btn" onclick="switchTab(9)">返回工具</button>
-    </div>
-
     <div id="tab6" class="tab-content">
         <div class="module-card">
             <div class="title">🌏 国家/地区选择</div>
@@ -527,35 +515,10 @@
         </div>
 
         <div class="module-card">
-            <div class="title">📊 快速报价</div>
-            <div id="quick-quote-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px;">
-                <div class="quick-quote-item" data-symbol="BTCUSD" style="text-align:center; padding:10px; background:linear-gradient(135deg, rgba(74,144,226,0.08), rgba(74,144,226,0.02)); border-radius:8px; border:1px solid #e8f0f8;">
-                    <div style="font-size:11px; color:#7f8c8d; margin-bottom:4px;">BTCUSD</div>
-                    <div class="tradingview-widget-container" data-symbol="BTCUSD" style="font-size:12px; font-weight:bold; color:#2c3e50;">--</div>
-                </div>
-                <div class="quick-quote-item" data-symbol="XAUUSD/WTI" style="text-align:center; padding:10px; background:linear-gradient(135deg, rgba(74,144,226,0.08), rgba(74,144,226,0.02)); border-radius:8px; border:1px solid #e8f0f8;">
-                    <div style="font-size:11px; color:#7f8c8d; margin-bottom:4px;">金油比</div>
-                    <div class="tradingview-widget-container" data-symbol="XAUUSD/WTI" style="font-size:12px; font-weight:bold; color:#2c3e50;">--</div>
-                </div>
-                <div class="quick-quote-item" data-symbol="SP500/WTI" style="text-align:center; padding:10px; background:linear-gradient(135deg, rgba(74,144,226,0.08), rgba(74,144,226,0.02)); border-radius:8px; border:1px solid #e8f0f8;">
-                    <div style="font-size:11px; color:#7f8c8d; margin-bottom:4px;">股油比</div>
-                    <div class="tradingview-widget-container" data-symbol="SP500/WTI" style="font-size:12px; font-weight:bold; color:#2c3e50;">--</div>
-                </div>
-                <div class="quick-quote-item" data-symbol="COPPER/WTI" style="text-align:center; padding:10px; background:linear-gradient(135deg, rgba(74,144,226,0.08), rgba(74,144,226,0.02)); border-radius:8px; border:1px solid #e8f0f8;">
-                    <div style="font-size:11px; color:#7f8c8d; margin-bottom:4px;">铜油比</div>
-                    <div class="tradingview-widget-container" data-symbol="COPPER/WTI" style="font-size:12px; font-weight:bold; color:#2c3e50;">--</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="module-card">
             <div class="title">快捷入口</div>
             <div class="mini-grid">
                 <div class="quick-card focus-group quick-card-group">
                     <div class="quick-subgrid">
-                        <div class="quick-subcard" onclick="openNewsBrowser('war')"><b>新闻浏览</b></div>
-                        <div class="quick-subcard" onclick="switchTab(5)"><b>看盘工具</b></div>
-                        <div class="quick-subcard" onclick="switchTab(12)"><b>宏观系统</b></div>
                         <div class="quick-subcard" onclick="clearInvestmentToolsCache()" style="background:linear-gradient(135deg,#e74c3c 0%,#c0392b 100%);color:#fff;"><b>清除缓存</b></div>
                     </div>
                 </div>
@@ -901,18 +864,6 @@
         <button class="floating-back-btn" onclick="switchTab(9)">返回工具</button>
     </div>
 
-    <div id="tab12" class="tab-content fullpage-tab">
-        <iframe
-            id="macro-online-frame"
-            src="https://hg-hongguan2.vercel.app/"
-            title="宏观系统"
-            style="width:100%; height:100vh; border:none; background:#fff; display:block;"
-            loading="eager"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation allow-popups">
-        </iframe>
-        <button class="floating-back-btn" onclick="switchTab(9)">返回工具</button>
-    </div>
-
     <div id="tab14" class="tab-content fullpage-tab">
         <iframe
             id="label-tool-mobile-frame"
@@ -921,18 +872,6 @@
             title="标签生成"
             class="fullscreen-frame"
             loading="eager">
-        </iframe>
-        <button class="floating-back-btn" onclick="switchTab(9)">返回工具</button>
-    </div>
-
-    <div id="tab13" class="tab-content fullpage-tab">
-        <iframe
-            id="news-browser-frame"
-            src="https://iran.immersivetranslate.com/zh-CN/"
-            title="新闻浏览"
-            style="width:100%; height:100vh; border:none; background:#fff; display:block;"
-            loading="eager"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-top-navigation allow-popups">
         </iframe>
         <button class="floating-back-btn" onclick="switchTab(9)">返回工具</button>
     </div>
