@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>HCN CRM SYSTEM</title>
+        <title>HCN CRM system</title>
         <!-- BUILD: 20260411-1243 -->
 
         <script src="https://cdn.jsdelivr.net/npm/lunar-javascript/lunar.js"></script>
@@ -1222,7 +1222,7 @@
                         <div>
                             <label style="font-size:11px; color:#666; display:block; margin-bottom:4px;">内部订单号</label>
                             <div style="display:flex; gap:6px;">
-                                <input type="text" id="crm-f-orderno" placeholder="如 HGCD-2025-001" style="flex:1; padding:9px; border:1px solid #ddd; border-radius:8px; font-size:13px;">
+                                <input type="text" id="crm-f-orderno" placeholder="如 HCN-2025-001" style="flex:1; padding:9px; border:1px solid #ddd; border-radius:8px; font-size:13px;">
                                 <button type="button" onclick="crmGenOrderNo()" style="flex-shrink:0; padding:9px 10px; background:#4a90e2; color:#fff; border:none; border-radius:8px; font-size:12px; cursor:pointer; white-space:nowrap;">自动</button>
                             </div>
                         </div>
@@ -2313,7 +2313,7 @@
     <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title>HGCD报价系统 v3.9</title>
+        <title>HCN报价系统 v3.9</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <style>
@@ -2498,7 +2498,7 @@
     <script>
     (function() {
         var root = document.documentElement;
-        var saved = localStorage.getItem('hgcd_theme');
+        var saved = localStorage.getItem('hcn_theme');
         if (saved === 'dark') {
             root.style.setProperty('--bg-gray', '#1c1c1e');
             root.style.setProperty('--bg-primary', '#000000');
@@ -2552,7 +2552,7 @@
                 <div class="input-item"><label>客户名称</label><input type="text" id="inCust" placeholder="客户姓名"></div>
                 <div class="input-item"><label>运单号</label>
                     <div style="display:flex;gap:8px;">
-                        <input type="text" id="inOrderNo" placeholder="HGCD+数字" style="flex:1;">
+                        <input type="text" id="inOrderNo" placeholder="HCN+数字" style="flex:1;">
                         <button type="button" onclick="generateOrderNo()" style="padding:10px 12px;background:#9b59b6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap;">自动生成</button>
                     </div>
                 </div>
@@ -3143,7 +3143,7 @@
         }
     };
 
-    let currentLang = localStorage.getItem('hgcd_lang') || 'zh-CN';
+    let currentLang = localStorage.getItem('hcn_lang') || 'zh-CN';
 
     function t(key) {
         return LANGUAGES[currentLang]?.texts[key] || LANGUAGES['zh-CN'].texts[key] || key;
@@ -3152,7 +3152,7 @@
     function setLanguage(lang) {
         if (!LANGUAGES[lang]) return;
         currentLang = lang;
-        localStorage.setItem('hgcd_lang', lang);
+        localStorage.setItem('hcn_lang', lang);
         updateLanguageUI();
         document.dispatchEvent(new CustomEvent('language-change', { detail: { lang } }));
     }
@@ -3462,7 +3462,7 @@
         function generateOrderNo() {
             const timestamp = Date.now().toString().slice(-8);
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            const orderNo = 'HGCD' + timestamp + random;
+            const orderNo = 'HCN' + timestamp + random;
             document.getElementById('inOrderNo').value = orderNo;
         }
 
@@ -4084,7 +4084,7 @@
     <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
-        <title>HGCD费用系统 v3.9</title>
+        <title>HCN费用系统 v3.9</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <style>
@@ -4245,7 +4245,7 @@
     <script>
     (function() {
         var root = document.documentElement;
-        var saved = localStorage.getItem('hgcd_theme');
+        var saved = localStorage.getItem('hcn_theme');
         if (saved === 'dark') {
             root.style.setProperty('--bg-gray', '#1c1c1e');
             root.style.setProperty('--bg-primary', '#000000');
@@ -4301,7 +4301,7 @@
                 <div class="input-item"><label>客户名称</label><input type="text" id="inCust" placeholder="客户姓名"></div>
                 <div class="input-item"><label>运单号</label>
                     <div style="display:flex;gap:8px;">
-                        <input type="text" id="inOrderNo" placeholder="HGCD+数字" style="flex:1;">
+                        <input type="text" id="inOrderNo" placeholder="HCN+数字" style="flex:1;">
                         <button type="button" onclick="generateOrderNo()" style="padding:10px 12px;background:#9b59b6;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap;">自动生成</button>
                     </div>
                 </div>
@@ -4854,7 +4854,7 @@
         function generateOrderNo() {
             const timestamp = Date.now().toString().slice(-8);
             const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            const orderNo = 'HGCD' + timestamp + random;
+            const orderNo = 'HCN' + timestamp + random;
             document.getElementById('inOrderNo').value = orderNo;
         }
 
@@ -5646,7 +5646,7 @@
         </div>
         
         <div class="row" style="display:flex; gap:10px;">
-            <div style="flex:1;"><label>单号前缀</label><input type="text" id="prefix" value="HGCD"></div>
+            <div style="flex:1;"><label>单号前缀</label><input type="text" id="prefix" value="HCN"></div>
             <div style="flex:1;"><label>生成件数</label><input type="number" id="qty" value="1"></div>
         </div>
 
@@ -6562,7 +6562,7 @@
                 if (Array.isArray(direct) && direct.length) return direct;
             } catch (e) {}
             try {
-                const crmData = JSON.parse(localStorage.getItem('hgcd_crm_fcl_v1') || '[]');
+                const crmData = JSON.parse(localStorage.getItem('hcn_crm_fcl_v1') || '[]');
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
                 return crmData.flatMap((r) => {
@@ -9494,7 +9494,7 @@
                 <div class="card-title">${title}</div>
                 <div class="card-meta">更新时间：${dateStr}</div>
                 <div id="card-content"></div>
-                <div class="card-footer">HGCD宏观投资策略</div>
+                <div class="card-footer">HCN宏观投资策略</div>
             </div>
         `;
     }
@@ -9783,14 +9783,14 @@
 
     function loadApiConfigs() {
         try {
-            const saved = localStorage.getItem('hgcd_api_configs');
+            const saved = localStorage.getItem('hcn_api_configs');
             if (saved) {
                 const data = JSON.parse(saved);
                 apiConfigs = data.configs || [];
                 autoSyncEnabled = data.autoSync || false;
                 if (apiConfigs.length > 0) {
-                    const selectedId = data.currentApiId || localStorage.getItem('hgcd_current_api_id');
-                    const selectedIndex = Number.isInteger(data.currentApiIndex) ? data.currentApiIndex : parseInt(localStorage.getItem('hgcd_current_api_index') || '0', 10);
+                    const selectedId = data.currentApiId || localStorage.getItem('hcn_current_api_id');
+                    const selectedIndex = Number.isInteger(data.currentApiIndex) ? data.currentApiIndex : parseInt(localStorage.getItem('hcn_current_api_index') || '0', 10);
                     currentApiConfig = apiConfigs.find(config => config.id === selectedId) || apiConfigs[selectedIndex] || apiConfigs[0];
                 }
             }
@@ -9803,14 +9803,14 @@
     function saveApiConfigs() {
         try {
             const currentIndex = currentApiConfig ? apiConfigs.findIndex(config => config.id === currentApiConfig.id) : -1;
-            localStorage.setItem('hgcd_api_configs', JSON.stringify({
+            localStorage.setItem('hcn_api_configs', JSON.stringify({
                 configs: apiConfigs,
                 autoSync: autoSyncEnabled,
                 currentApiId: currentApiConfig?.id || null,
                 currentApiIndex: currentIndex >= 0 ? currentIndex : 0
             }));
-            if (currentApiConfig?.id) localStorage.setItem('hgcd_current_api_id', currentApiConfig.id);
-            localStorage.setItem('hgcd_current_api_index', String(currentIndex >= 0 ? currentIndex : 0));
+            if (currentApiConfig?.id) localStorage.setItem('hcn_current_api_id', currentApiConfig.id);
+            localStorage.setItem('hcn_current_api_index', String(currentIndex >= 0 ? currentIndex : 0));
         } catch (e) {
             console.error('保存API配置失败:', e);
         }
@@ -9994,11 +9994,11 @@
                 appState: null,
                 reminders: [],
                 userPreferences: {},
-                apiConfigs: JSON.parse(localStorage.getItem('hgcd_api_configs') || '{}'),
+                apiConfigs: JSON.parse(localStorage.getItem('hcn_api_configs') || '{}'),
                 currentApiId: currentApiConfig?.id || null
             };
             
-            const ordersData = JSON.parse(localStorage.getItem('hgcd_crm_fcl_v1') || '[]');
+            const ordersData = JSON.parse(localStorage.getItem('hcn_crm_fcl_v1') || '[]');
             if (ordersData.length) {
                 allData.orders = ordersData;
             }
@@ -10053,8 +10053,8 @@
             
             try {
                 allData.userPreferences = {
-                    theme: localStorage.getItem('hgcd_theme') || 'light',
-                    lang: localStorage.getItem('hgcd_lang') || 'zh-CN',
+                    theme: localStorage.getItem('hcn_theme') || 'light',
+                    lang: localStorage.getItem('hcn_lang') || 'zh-CN',
                     paymentNotice: localStorage.getItem('freight_payment_notice_enabled_v1') || '0'
                 };
             } catch(e) {}
@@ -10135,7 +10135,7 @@
                 let restoreCount = 0;
                 
                 if (data.orders && data.orders.length) {
-                    localStorage.setItem('hgcd_crm_fcl_v1', JSON.stringify(data.orders));
+                    localStorage.setItem('hcn_crm_fcl_v1', JSON.stringify(data.orders));
                     restoreCount += data.orders.length;
                 }
                 
@@ -10199,11 +10199,11 @@
                 
                 if (data.userPreferences) {
                     if (data.userPreferences.theme) {
-                        localStorage.setItem('hgcd_theme', data.userPreferences.theme);
+                        localStorage.setItem('hcn_theme', data.userPreferences.theme);
                         restoreCount++;
                     }
                     if (data.userPreferences.lang) {
-                        localStorage.setItem('hgcd_lang', data.userPreferences.lang);
+                        localStorage.setItem('hcn_lang', data.userPreferences.lang);
                         restoreCount++;
                     }
                     if (data.userPreferences.paymentNotice) {
@@ -10214,21 +10214,21 @@
                 
                 if (data.apiConfigs) {
                     if (Array.isArray(data.apiConfigs)) {
-                        localStorage.setItem('hgcd_api_configs', JSON.stringify({
+                        localStorage.setItem('hcn_api_configs', JSON.stringify({
                             configs: data.apiConfigs,
                             autoSync: false,
                             currentApiId: data.currentApiId || data.apiConfigs[0]?.id || null,
                             currentApiIndex: 0
                         }));
                     } else {
-                        localStorage.setItem('hgcd_api_configs', JSON.stringify(data.apiConfigs));
+                        localStorage.setItem('hcn_api_configs', JSON.stringify(data.apiConfigs));
                     }
                     loadApiConfigs();
                     restoreCount++;
                 }
                 
                 if (data.currentApiId) {
-                    localStorage.setItem('hgcd_current_api_id', data.currentApiId);
+                    localStorage.setItem('hcn_current_api_id', data.currentApiId);
                 }
                 
                 showApiConfigStatus(`✅ 恢复成功！已下载 ${restoreCount} 条记录`, 'success');
