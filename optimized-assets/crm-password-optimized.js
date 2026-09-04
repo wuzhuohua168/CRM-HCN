@@ -455,7 +455,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
     const APP_STATE_KEY = 'logistics_workbench_state_v1';
     const APP_DB_NAME = 'logistics_workbench_db';
     const APP_DB_STORE = 'kv';
-    const APP_EXTRA_STORAGE_KEYS = ['hcn_calendar_memos','hcn_rates_cache','shipment_notes_v1','dashboard_todos_v1','freight_air_cache_v1','freight_fcl_cache_v1','hgcd_crm_fcl_v1','macro_manual_overrides','macro_consistency_history','macro_ui_state','macro_score_state','macro_alloc_state','macro_cache_last','logistics_client_data','logistics_supplier_data','logistics_reminder_data','logistics_reconciliation_data','logistics_freight_data','cloudflare_api_url','cloudflare_api_key','crm_auto_sync','crm_sync_other','crm_api_configs','crm_current_api_id'];
+    const APP_EXTRA_STORAGE_KEYS = ['hcn_calendar_memos','hcn_rates_cache','shipment_notes_v1','dashboard_todos_v1','freight_air_cache_v1','freight_fcl_cache_v1','hcn_crm_fcl_v1','macro_manual_overrides','macro_consistency_history','macro_ui_state','macro_score_state','macro_alloc_state','macro_cache_last','logistics_client_data','logistics_supplier_data','logistics_reminder_data','logistics_reconciliation_data','logistics_freight_data','cloudflare_api_url','cloudflare_api_key','crm_auto_sync','crm_sync_other','crm_api_configs','crm_current_api_id'];
     let saveTimer = null;
     let cloudFileHandle = null;
     let lastSavedAt = '';
@@ -911,7 +911,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
             };
             
             const KEYS_TO_BACKUP = [
-                'hgcd_crm_fcl_v1',
+                'hcn_crm_fcl_v1',
                 'logistics_client_data',
                 'logistics_supplier_data',
                 'logistics_reminder_data',
@@ -3183,7 +3183,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
     GlobalSearchRegistry.register({
         name: 'CRM订单',
         icon: '📋',
-        storageKey: 'hgcd_crm_fcl_v1',
+        storageKey: 'hcn_crm_fcl_v1',
         searchFields: ['orderno', 'mbl', 'hbl', 'client', 'pol', 'pod', 'shipaddr', 'recvaddr', 'status', 'carrier'],
         colorField: 'status',
         colorMap: {'询价':'#8e44ad','已下单':'#2980b9','已入库':'#3498db','已审单':'#9b59b6','已装柜':'#e67e22','已开船':'#16a085','已到港':'#27ae60','已清关':'#1f7a5c','已完结':'#7f8c8d','取消':'#c0392b'},
@@ -4233,7 +4233,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
     // =====================================================
     // CRM 整柜台账系统
     // =====================================================
-    const CRM_KEY = 'hgcd_crm_fcl_v1';
+    const CRM_KEY = 'hcn_crm_fcl_v1';
 
     const CRM_STATUS_COLOR = {
         '询价':   '#8e44ad',
@@ -4950,7 +4950,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         const month = String(now.getMonth() + 1).padStart(2, '0');
         const day = String(now.getDate()).padStart(2, '0');
         const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-        const orderNo = `HGCD-${year}${month}${day}-${random}`;
+        const orderNo = `HCN-${year}${month}${day}-${random}`;
         document.getElementById('crm-f-orderno').value = orderNo;
     }
 
@@ -6466,15 +6466,13 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         const csv = '\uFEFF' + [headers.map(h=>`"${h}"`).join(','), ...rows].join('\n');
         const a = document.createElement('a');
         a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8;'}));
-        a.download = 'HGCD_CRM_' + new Date().toISOString().slice(0,10) + '.csv';
+        a.download = 'HCN_CRM_' + new Date().toISOString().slice(0,10) + '.csv';
         a.click();
         showToast('CSV已导出');
     }
 
-    const DEFAULT_API_URL = 'http://107.173.7.180:3000';
+    const DEFAULT_API_URL = 'http://107.173.7.180:3001';
     const DEFAULT_API_KEY_ENCRYPTED = 'Y3JtMjAyNHNlY3JldGtleTEyMw==';
-    const CLOUDFLARE_API_URL = 'https://crm-tracking-api.wubairan.workers.dev';
-    const CLOUDFLARE_API_KEY_ENCRYPTED = 'Y3JtMjAyNHNlY3JldGtleTEyMw==';
     let editingApiIndex = -1;
 
     function decryptApiKey(encrypted) {
@@ -6507,13 +6505,6 @@ const PASSWORD_KEY = 'crm_system_password_hash';
                 url: DEFAULT_API_URL,
                 key: DEFAULT_API_KEY_ENCRYPTED,
                 isDefault: true
-            },
-            {
-                id: 'cloudflare',
-                name: 'Cloudflare备用',
-                url: CLOUDFLARE_API_URL,
-                key: CLOUDFLARE_API_KEY_ENCRYPTED,
-                isDefault: false
             }
         ];
     }
@@ -6544,11 +6535,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
             if (apiKey) return apiKey;
         }
         
-        // 2. 尝试旧版localStorage里的cloudflare_api_key
-        const legacyKey = localStorage.getItem('cloudflare_api_key');
-        if (legacyKey) return legacyKey;
-        
-        // 3. 使用默认密钥（与DEFAULT_API_KEY_ENCRYPTED解密后一致）
+        // 2. 使用默认密钥（与DEFAULT_API_KEY_ENCRYPTED解密后一致）
         return decryptApiKey(DEFAULT_API_KEY_ENCRYPTED);
     }
 
@@ -6560,11 +6547,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
             return config.url;
         }
         
-        // 2. 尝试旧版localStorage里的cloudflare_api_url
-        const legacyUrl = localStorage.getItem('cloudflare_api_url');
-        if (legacyUrl) return legacyUrl;
-        
-        // 3. 使用默认VPS URL（与DEFAULT_API_URL一致）
+        // 2. 使用默认VPS URL（与DEFAULT_API_URL一致）
         return DEFAULT_API_URL;
     }
 
@@ -6908,8 +6891,6 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         console.log('[云端恢复] API URL:', apiUrl);
         console.log('[云端恢复] API Key:', apiKey ? `${apiKey.substring(0, 8)}...` : '未设置');
         console.log('[云端恢复] 当前配置:', getCurrentApiConfig());
-        console.log('[云端恢复] 旧版cloudflare_api_key:', localStorage.getItem('cloudflare_api_key'));
-        console.log('[云端恢复] 旧版cloudflare_api_url:', localStorage.getItem('cloudflare_api_url'));
         
         if (!apiUrl || !apiKey) {
             showToast('请先配置API或检查网络连接');
@@ -7258,7 +7239,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         <span style="font-size:11px;color:#aaa;margin-right:4px;">状态汇总</span>${summaryTags}
     </div>
     <table style="width:100%;border-collapse:collapse;font-size:11px;">${headRow}<tbody>${rowsHtml}</tbody><tfoot>${footerRow}</tfoot></table>
-    <div style="margin-top:12px;font-size:9px;color:#ccc;text-align:right;">由 HGCD CRM系统生成 · ${today}${isClient ? '' : ' · 内部资料，请勿外传'}</div>
+    <div style="margin-top:12px;font-size:9px;color:#ccc;text-align:right;">由 HCN CRM系统生成 · ${today}${isClient ? '' : ' · 内部资料，请勿外传'}</div>
     ${actionHtml}
     </div>
     </body></html>`;
@@ -10274,7 +10255,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         body.classList.toggle('dark-mode');
         const isDark = body.classList.contains('dark-mode');
         btn.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('hgcd_theme', isDark ? 'dark' : 'light');
+        localStorage.setItem('hcn_theme', isDark ? 'dark' : 'light');
         
         document.querySelectorAll('iframe').forEach(iframe => {
             try {
@@ -10284,7 +10265,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
     }
 
     function initTheme() {
-        const saved = localStorage.getItem('hgcd_theme');
+        const saved = localStorage.getItem('hcn_theme');
         const btn = document.getElementById('theme-toggle');
         if (saved === 'dark') {
             document.body.classList.add('dark-mode');
