@@ -992,7 +992,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         }
         const tabBar = document.querySelector('.tab-bar');
         if (tabBar) {
-            if ([5, 10, 11, 12, 13, 14].includes(idx)) tabBar.classList.add('hidden');
+            if ([10, 11, 14].includes(idx)) tabBar.classList.add('hidden');
             else tabBar.classList.remove('hidden');
         }
         if (idx === 10) ensureEmbeddedFrameLoaded('quotation-tool-frame');
@@ -4040,20 +4040,6 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         frame.dataset.loaded = 'true';
     }
 
-    function setNewsBrowser(type) {
-        const frame = document.getElementById('news-browser-frame');
-        if (!frame) return;
-        const sources = {
-            war: 'https://iran.immersivetranslate.com/zh-CN/'
-        };
-        frame.src = sources[type] || sources.war;
-    }
-
-    function openNewsBrowser(type = 'war') {
-        switchTab(13);
-        setNewsBrowser(type);
-    }
-
     // 清除投资工具缓存
     function clearInvestmentToolsCache() {
         if (!confirm('确定要清除投资工具的所有缓存吗？\n\n这将清除：\n- LocalStorage\n- SessionStorage\n- IndexedDB\n- Service Worker缓存\n\n清除后建议刷新页面。')) {
@@ -4108,47 +4094,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         
         function showResult() {
             alert('缓存清除完成！\n\n' + clearLog.join('\n') + '\n\n请刷新页面以使更改生效。');
-            
-            // 刷新iframe
-            try {
-                const investFrame = document.getElementById('invest-online-frame');
-                const macroFrame = document.getElementById('macro-online-frame');
-                
-                if (investFrame) {
-                    investFrame.src = investFrame.src;
-                }
-                if (macroFrame) {
-                    macroFrame.src = macroFrame.src;
-                }
-            } catch (e) {
-                console.log('刷新iframe失败:', e);
-            }
         }
-    }
-
-    // 加载快捷报价
-    function loadQuickQuotes() {
-        const quotes = document.querySelectorAll('.quick-quote-item .tradingview-widget-container');
-        quotes.forEach(container => {
-            const symbol = container.dataset.symbol;
-            if (!symbol) return;
-            
-            // 创建TradingView single-quote widget
-            const script = document.createElement('script');
-            script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js';
-            script.async = true;
-            script.innerHTML = JSON.stringify({
-                symbol: symbol,
-                width: '100%',
-                colorTheme: 'light',
-                isTransparent: true,
-                locale: 'zh_CN',
-                showSymbolLogo: false
-            });
-            
-            container.innerHTML = '';
-            container.appendChild(script);
-        });
     }
 
     function resolveOriginPort(address) {
@@ -9713,7 +9659,6 @@ const PASSWORD_KEY = 'crm_system_password_hash';
         reconciliationGenerateFromCRM();
         reconciliationRender();
         freightLoadData();
-        loadQuickQuotes();
         freightRender();
         freightInitTrendRoutes();
         const trendCanvas = document.getElementById('freight-trend-canvas');
