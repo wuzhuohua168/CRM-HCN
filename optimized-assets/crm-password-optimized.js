@@ -35,7 +35,7 @@ const PASSWORD_KEY = 'crm_system_password_hash';
     function getAuthApiUrl() {
         const customAuthUrl = localStorage.getItem('crm_auth_api_url');
         if (customAuthUrl) return customAuthUrl;
-        return 'http://107.173.7.180:3000';
+        return 'http://107.173.7.180:3001';
     }
 
     function saveLocalPasswordHash(password) {
